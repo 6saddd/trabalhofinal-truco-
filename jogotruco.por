@@ -1,3 +1,4 @@
+
 programa {
   inclua biblioteca Util --> u
   cadeia cartas[40]={"1 de Ouro","2 de Ouro","3 de Ouro","4 de Ouro","5 de Ouro","6 de Ouro","7 de Ouro","11 de Ouro","12 de Ouro","13 de Ouro","1 de Espada","2 de Espada","3 de Espada","4 de Espada","5 de Espada","6 de Espada","7 de Espada","11 de Espada","12 de Espada","13 de Espada","1 de Paus","2 de Paus","3 de Paus","4 de Paus","5 de Paus","6 de Paus","7 de Paus","11 de Paus","12 de Paus","13 de Paus","1 de Copa","2 de Copa","3 de Copa","4 de Copa","5 de Copa","6 de Copa","7 de Copa","11 de Copa","12 de Copa","13 de Copa"}
@@ -21,7 +22,37 @@ programa {
 
   funcao menu(){
     enquanto (opcao != 0){
-      escreva("\n1 - Jogar\n0 - Sair\n")
+    escreva("######## ########  ##     ##  ######   #####\n")
+    escreva("  ##    ##     ## ##     ## ##       ##     ##\n")
+    escreva("  ##    ##     ## ##     ## ##       ##     ##\n")
+    escreva("  ##    ########  ##     ## ##       ##     ##\n")
+    escreva("  ##    ##   ##   ##     ## ##       ##     ##\n")
+    escreva("  ##    ##    ##  ##     ## ##       ##     ##\n")
+    escreva("  ##    ##     ##  #######   ######   #######\n")
+    escreva("\n1 - Jogar\n0 - Sair\n") 
+    escreva("                 :**-                                \n")
+    escreva("               -*#%%@#-                              \n")
+    escreva("            .=#%%%%%@@%%=.                           \n")
+    escreva("          :=#####*##@@%@@%+.  .:::-==++=.            \n")
+    escreva("        -*%##*###*##@@%@@@@@%%@@@@@@@@@@#:           \n")
+    escreva("      =#%@%%**###*##@@%@@@%@@@%%@@@@@@@@@%####:      \n")
+    escreva("   .+%@@%%%%%#%####%%%%@%%%@@@##@@@@@@@@@@@@@@*:     \n")
+    escreva(" :*%@@@@%@%%%######%%%%@%%%%@@%#%@@@@@@@@@@@@@#-     \n")
+    escreva("-#%%%%%%%%%%%%%%%%%%%%%%@%%@%@%*%@@@@@@@@@@@@@%=     \n")
+    escreva(":*##%%%%%%%%%%%%%%%%%%%%%%%%@@@@@@@@@%*#@@@@@@@+.    \n")
+    escreva(" .+#*%%%%%%%%@@%%@%%%%%%%%%%%%@@@@@@%+++*%@@@@@#:    \n")
+    escreva("   :*##%%%%%%%%%%%%%%%%%%%%%%%@@@@@#*+**+*#%@@@%-    \n")
+    escreva("     :*###%%%%%%%%@%%%%%%%%%%%@@@@@+*+++++*#@@@@+.   \n")
+    escreva("       -####%%%%%@%++%%%%%%%%%%@@@@#***+***#@@@@*:   \n")
+    escreva("         =#*+%%%%+-. .*%%%%%%%%@@@@@@@#+*%@@@@@@#-   \n")
+    escreva("          .=#%#+-.     -%%%%%%%@@@@@@@@@@@@@@@#*%=.  \n")
+    escreva("            .:-.        .*%%%%%@@@@@@@@@@@@@@@%#%#:  \n")
+    escreva("                          =%%%%%@@@@@@@@@@@@@@%**%=  \n")
+    escreva("                           :#%%%@@@@@@@@%@@@@@@#%@#: \n")
+    escreva("                             =%%%%%%%%@@%@@%@@@@%@%=.\n")
+    escreva("                              :*%@@@@@%%%###**++==-: \n")
+    escreva("                                .=**+=-::...         \n")
+    escreva("                                   ..                \n")
       leia(opcao)
       escolha(opcao){
         caso 1:
@@ -105,7 +136,7 @@ programa {
       aux = u.sorteia(0,39)
       cartap1[i] = cartas[aux]
       pontoscarta1[i] = valorcartas[aux]
-      se(cartas[aux] == ""){
+      enquanto(cartas[aux] == ""){
         aux = u.sorteia(0,39)
         cartap1[i] = cartas[aux]
         pontoscarta1[i] = valorcartas[aux]
@@ -116,7 +147,7 @@ programa {
       aux = u.sorteia(0,39)
       cartap2[i] = cartas[aux]
       pontoscarta2[i] = valorcartas [aux]
-      se(cartas[aux] == ""){
+      enquanto(cartas[aux] == ""){
         aux = u.sorteia(0,39)
         cartap2[i] = cartas[aux]
         pontoscarta2[i] = valorcartas[aux]
@@ -155,7 +186,7 @@ programa {
     }
   }
 
-  funcao winnerrodada(inteiro numRodada){
+  funcao winnerrodada(){
     para(inteiro i = 0; i < 3; i++){
       se(pontoscarta1[i] > pontoscarta2[i]){
         pontorodada1 ++
