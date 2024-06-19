@@ -33,23 +33,23 @@ programa {
     escreva("               -*#%%@#-                              \n")
     escreva("            .=#%%%%%@@%%=.                           \n")
     escreva("          :=#####*##@@%@@%+.  .:::-==++=.            \n")
-    escreva("        -*%##*###*##@@%@@@@@%%@@@@@@@@@@#:           \n")
-    escreva("      =#%@%%**###*##@@%@@@%@@@%%@@@@@@@@@%####:      \n")
+    escreva("        -%#####*##@@%@@@@@%%@@@@@@@@@@#:           \n")
+    escreva("      =#%@%%*#####@@%@@@%@@@%%@@@@@@@@@%####:      \n")
     escreva("   .+%@@%%%%%#%####%%%%@%%%@@@##@@@@@@@@@@@@@@*:     \n")
     escreva(" :*%@@@@%@%%%######%%%%@%%%%@@%#%@@@@@@@@@@@@@#-     \n")
     escreva("-#%%%%%%%%%%%%%%%%%%%%%%@%%@%@%*%@@@@@@@@@@@@@%=     \n")
-    escreva(":*##%%%%%%%%%%%%%%%%%%%%%%%%@@@@@@@@@%*#@@@@@@@+.    \n")
-    escreva(" .+#*%%%%%%%%@@%%@%%%%%%%%%%%%@@@@@@%+++*%@@@@@#:    \n")
-    escreva("   :*##%%%%%%%%%%%%%%%%%%%%%%%@@@@@#*+**+*#%@@@%-    \n")
-    escreva("     :*###%%%%%%%%@%%%%%%%%%%%@@@@@+*+++++*#@@@@+.   \n")
-    escreva("       -####%%%%%@%++%%%%%%%%%%@@@@#***+***#@@@@*:   \n")
-    escreva("         =#*+%%%%+-. .*%%%%%%%%@@@@@@@#+*%@@@@@@#-   \n")
+    escreva(":##%%%%%%%%%%%%%%%%%%%%%%%%@@@@@@@@@%#@@@@@@@+.    \n")
+    escreva(" .+#%%%%%%%%@@%%@%%%%%%%%%%%%@@@@@@%+++%@@@@@#:    \n")
+    escreva("   :##%%%%%%%%%%%%%%%%%%%%%%%@@@@@#+*+#%@@@%-    \n")
+    escreva("     :###%%%%%%%%@%%%%%%%%%%%@@@@@++++++*#@@@@+.   \n")
+    escreva("       -####%%%%%@%++%%%%%%%%%%@@@@#*+*#@@@@*:   \n")
+    escreva("         =#+%%%%+-. .%%%%%%%%@@@@@@@#+*%@@@@@@#-   \n")
     escreva("          .=#%#+-.     -%%%%%%%@@@@@@@@@@@@@@@#*%=.  \n")
     escreva("            .:-.        .*%%%%%@@@@@@@@@@@@@@@%#%#:  \n")
     escreva("                          =%%%%%@@@@@@@@@@@@@@%**%=  \n")
     escreva("                           :#%%%@@@@@@@@%@@@@@@#%@#: \n")
     escreva("                             =%%%%%%%%@@%@@%@@@@%@%=.\n")
-    escreva("                              :*%@@@@@%%%###**++==-: \n")
+    escreva("                              :%@@@@@%%%###*++==-: \n")
     escreva("                                .=**+=-::...         \n")
     escreva("                                   ..                \n")
       leia(opcao)
@@ -65,9 +65,9 @@ programa {
   }
 
   funcao jogo(){
-    para (numMao = 0; numMao < 12; numMao++){
+    para (numMao = 0; numMao < 12; numMao++){//Contador para sortear as cartas 12 vezes
       mao_cartas()
-      para (numRodada = 0; numRodada < 3; numRodada++){
+      para (numRodada = 0; numRodada < 3; numRodada++){//Contador das rodadas 
         cartanamesa1 = ""
         limpa()
         escreva("Rodada - Player ", 1, ": ", pontorodada1,"\n")
@@ -75,7 +75,7 @@ programa {
         escreva("Mão - Player ", 1, ": ", pontomao1,"\n")
         escreva("Mão - Player ", 2, ": ", pontomao2,"\n")
         aux2 = falso
-        enquanto(aux2 == falso){
+        enquanto(aux2 == falso){//Quando um jogador joga a carta vira verdadeira
           cartasPlayerUm()
           cartasjogadap1()
         }
@@ -135,10 +135,10 @@ programa {
       aux = u.sorteia(0,39)
       cartap1[i] = cartas[aux]
       pontoscarta1[i] = valorcartas[aux]
-      se(cartas[aux] == ""){
+      enquanto(cartas[aux] == ""){ //aux para trocar a carta sorteada para vazio
         aux = u.sorteia(0,39)
         cartap1[i] = cartas[aux]
-        pontoscarta1[i] = valorcartas[aux]
+        pontoscarta1[i] = valorcartas[aux]//Variavel auxiliar usada para não deixar a mão vazia
       }
       cartas[aux] = ""
     }
@@ -146,7 +146,7 @@ programa {
       aux = u.sorteia(0,39)
       cartap2[i] = cartas[aux]
       pontoscarta2[i] = valorcartas [aux]
-      se(cartas[aux] == ""){
+      enquanto(cartas[aux] == ""){
         aux = u.sorteia(0,39)
         cartap2[i] = cartas[aux]
         pontoscarta2[i] = valorcartas[aux]
@@ -186,18 +186,13 @@ programa {
   }
 
   funcao winnerrodada(){
-    para(inteiro i = 0; i < 3; i++){
-      se(pontoscarta1[i] > pontoscarta2[i]){
+      se(cartanamesa1 < cartanamesa2){
         pontorodada1 ++
-        pare
       }
-      senao se(pontoscarta1[i] < pontoscarta2[i]){
+      senao se(cartanamesa2 < cartanamesa1){
         pontorodada2 ++
-        pare
       }
-      senao se(pontoscarta1[i] == pontoscarta2[i]){
-        pare
-      }
-    }
+      senao se(cartanamesa1 == cartanamesa2){
+      } 
   }
 }
