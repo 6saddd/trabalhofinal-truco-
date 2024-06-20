@@ -1,4 +1,3 @@
-
 programa {
   inclua biblioteca Util --> u
   cadeia cartas[40]={"1 de Ouro","2 de Ouro","3 de Ouro","4 de Ouro","5 de Ouro","6 de Ouro","7 de Ouro","11 de Ouro","12 de Ouro","13 de Ouro","1 de Espada","2 de Espada","3 de Espada","4 de Espada","5 de Espada","6 de Espada","7 de Espada","11 de Espada","12 de Espada","13 de Espada","1 de Paus","2 de Paus","3 de Paus","4 de Paus","5 de Paus","6 de Paus","7 de Paus","11 de Paus","12 de Paus","13 de Paus","1 de Copa","2 de Copa","3 de Copa","4 de Copa","5 de Copa","6 de Copa","7 de Copa","11 de Copa","12 de Copa","13 de Copa"}
@@ -34,23 +33,23 @@ programa {
     escreva("               -*#%%@#-                              \n")
     escreva("            .=#%%%%%@@%%=.                           \n")
     escreva("          :=#####*##@@%@@%+.  .:::-==++=.            \n")
-    escreva("        -*%##*###*##@@%@@@@@%%@@@@@@@@@@#:           \n")
-    escreva("      =#%@%%**###*##@@%@@@%@@@%%@@@@@@@@@%####:      \n")
+    escreva("        -%#####*##@@%@@@@@%%@@@@@@@@@@#:           \n")
+    escreva("      =#%@%%*#####@@%@@@%@@@%%@@@@@@@@@%####:      \n")
     escreva("   .+%@@%%%%%#%####%%%%@%%%@@@##@@@@@@@@@@@@@@*:     \n")
     escreva(" :*%@@@@%@%%%######%%%%@%%%%@@%#%@@@@@@@@@@@@@#-     \n")
     escreva("-#%%%%%%%%%%%%%%%%%%%%%%@%%@%@%*%@@@@@@@@@@@@@%=     \n")
-    escreva(":*##%%%%%%%%%%%%%%%%%%%%%%%%@@@@@@@@@%*#@@@@@@@+.    \n")
-    escreva(" .+#*%%%%%%%%@@%%@%%%%%%%%%%%%@@@@@@%+++*%@@@@@#:    \n")
-    escreva("   :*##%%%%%%%%%%%%%%%%%%%%%%%@@@@@#*+**+*#%@@@%-    \n")
-    escreva("     :*###%%%%%%%%@%%%%%%%%%%%@@@@@+*+++++*#@@@@+.   \n")
-    escreva("       -####%%%%%@%++%%%%%%%%%%@@@@#***+***#@@@@*:   \n")
-    escreva("         =#*+%%%%+-. .*%%%%%%%%@@@@@@@#+*%@@@@@@#-   \n")
+    escreva(":##%%%%%%%%%%%%%%%%%%%%%%%%@@@@@@@@@%#@@@@@@@+.    \n")
+    escreva(" .+#%%%%%%%%@@%%@%%%%%%%%%%%%@@@@@@%+++%@@@@@#:    \n")
+    escreva("   :##%%%%%%%%%%%%%%%%%%%%%%%@@@@@#+*+#%@@@%-    \n")
+    escreva("     :###%%%%%%%%@%%%%%%%%%%%@@@@@++++++*#@@@@+.   \n")
+    escreva("       -####%%%%%@%++%%%%%%%%%%@@@@#+#@@@@*:   \n")
+    escreva("         =#+%%%%+-. .%%%%%%%%@@@@@@@#+*%@@@@@@#-   \n")
     escreva("          .=#%#+-.     -%%%%%%%@@@@@@@@@@@@@@@#*%=.  \n")
     escreva("            .:-.        .*%%%%%@@@@@@@@@@@@@@@%#%#:  \n")
     escreva("                          =%%%%%@@@@@@@@@@@@@@%**%=  \n")
     escreva("                           :#%%%@@@@@@@@%@@@@@@#%@#: \n")
     escreva("                             =%%%%%%%%@@%@@%@@@@%@%=.\n")
-    escreva("                              :*%@@@@@%%%###**++==-: \n")
+    escreva("                              :%@@@@@%%%###*++==-: \n")
     escreva("                                .=**+=-::...         \n")
     escreva("                                   ..                \n")
       leia(opcao)
@@ -66,9 +65,9 @@ programa {
   }
 
   funcao jogo(){
-    para (numMao = 0; numMao < 12; numMao++){
+    para (numMao = 0; numMao < 12; numMao++){//Contador para sortear as cartas 12 vezes
       mao_cartas()
-      para (numRodada = 0; numRodada < 3; numRodada++){
+      para (numRodada = 0; numRodada < 3; numRodada++){//Contador das rodadas 
         cartanamesa1 = ""
         limpa()
         escreva("Rodada - Player ", 1, ": ", pontorodada1,"\n")
@@ -76,7 +75,7 @@ programa {
         escreva("Mão - Player ", 1, ": ", pontomao1,"\n")
         escreva("Mão - Player ", 2, ": ", pontomao2,"\n")
         aux2 = falso
-        enquanto(aux2 == falso){
+        enquanto(aux2 == falso){//Quando um jogador joga a carta vira verdadeira
           cartasPlayerUm()
           cartasjogadap1()
         }
@@ -96,6 +95,48 @@ programa {
     }
   }
 
+  funcao mao_cartas(){
+    inteiro aux = 0
+    para(inteiro i = 0; i < 3; i ++){
+      aux = u.sorteia(0,39)
+      cartap1[i] = cartas[aux]
+      pontoscarta1[i] = valorcartas[aux]
+      enquanto(cartas[aux] == ""){ //para trocar a carta sorteada para vazio
+        aux = u.sorteia(0,39)
+        cartap1[i] = cartas[aux]
+        pontoscarta1[i] = valorcartas[aux]//auxiliar usada para não deixar repetir carta
+      }
+      cartas[aux] = ""
+    }
+    para(inteiro i = 0; i < 3; i++){
+      aux = u.sorteia(0,39)
+      cartap2[i] = cartas[aux]
+      pontoscarta2[i] = valorcartas [aux]
+      enquanto(cartas[aux] == ""){
+        aux = u.sorteia(0,39)
+        cartap2[i] = cartas[aux]
+        pontoscarta2[i] = valorcartas[aux]
+      }
+      cartas[aux] = ""
+    }
+    escreva(cartap1,"\n")
+    escreva(cartap2, "\n")
+  }
+
+  funcao cartasPlayerUm(){
+    escreva("Player1: \n")
+    para(inteiro i = 0; i < 3; i++){
+      escreva(cartap1[i],"\n") //escreve as 3 cartas sorteadas para o player
+    }
+  }
+
+  funcao cartasPlayerDois(){
+    escreva("Player2: \n")
+    para(inteiro i = 0; i < 3; i++){
+      escreva(cartap2[i],"\n")
+    }
+  }
+
   funcao cartasjogadap1(){
     escreva("escolha sua carta \n")
     leia(cartanamesa1)
@@ -103,7 +144,7 @@ programa {
 
     para(inteiro i = 0; i < 3; i++){
       se(cartanamesa1 == cartap1[i]){
-        cartap1[i] = "ta na mesa carai"
+        cartap1[i] = "ta na mesa carai" // muda a carta que foi jogada para o nome ta na mesa
         aux2 = verdadeiro
         pare
       }
@@ -130,48 +171,6 @@ programa {
     }
   }
 
-  funcao mao_cartas(){
-    inteiro aux = 0
-    para(inteiro i = 0; i < 3; i ++){
-      aux = u.sorteia(0,39)
-      cartap1[i] = cartas[aux]
-      pontoscarta1[i] = valorcartas[aux]
-      enquanto(cartas[aux] == ""){
-        aux = u.sorteia(0,39)
-        cartap1[i] = cartas[aux]
-        pontoscarta1[i] = valorcartas[aux]
-      }
-      cartas[aux] = ""
-    }
-    para(inteiro i = 0; i < 3; i++){
-      aux = u.sorteia(0,39)
-      cartap2[i] = cartas[aux]
-      pontoscarta2[i] = valorcartas [aux]
-      enquanto(cartas[aux] == ""){
-        aux = u.sorteia(0,39)
-        cartap2[i] = cartas[aux]
-        pontoscarta2[i] = valorcartas[aux]
-      }
-      cartas[aux] = ""
-    }
-    escreva(cartap1,"\n")
-    escreva(cartap2, "\n")
-  }
-
-  funcao cartasPlayerUm(){
-    escreva("Player1: \n")
-    para(inteiro i = 0; i < 3; i++){
-      escreva(cartap1[i],"\n")
-    }
-  }
-
-  funcao cartasPlayerDois(){
-    escreva("Player2: \n")
-    para(inteiro i = 0; i < 3; i++){
-      escreva(cartap2[i],"\n")
-    }
-  }
-
   funcao mostrarwinnermao(){
     se(numRodada == 3){
       se(pontorodada1 > pontorodada2){
@@ -187,18 +186,13 @@ programa {
   }
 
   funcao winnerrodada(){
-    para(inteiro i = 0; i < 3; i++){
-      se(pontoscarta1[i] > pontoscarta2[i]){
+      se(cartanamesa1 < cartanamesa2){
         pontorodada1 ++
-        pare
       }
-      senao se(pontoscarta1[i] < pontoscarta2[i]){
+      senao se(cartanamesa2 < cartanamesa1){
         pontorodada2 ++
-        pare
       }
-      senao se(pontoscarta1[i] == pontoscarta2[i]){
-        pare
-      }
-    }
+      senao se(cartanamesa1 == cartanamesa2){
+      } 
   }
 }
